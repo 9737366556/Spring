@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!--=========================== byName =========================== -->
+	<bean class="com.nikunj.springcore.autowire.byName.Employee"
+		id="employeeByName" autowire="byName">
+		<property name="name" value="Nikunj" />
+	</bean>
+
+	<bean class="com.nikunj.springcore.autowire.byName.Address"
+		id="address1">
+		<property name="city" value="surat" />
+		<property name="state" value="gujarat" />
+	</bean>
+
+	<bean class="com.nikunj.springcore.autowire.byName.Address"
+		id="address">
+		<property name="city" value="mumbai" />
+		<property name="state" value="maharastra" />
+	</bean>
+
+	<bean class="com.nikunj.springcore.autowire.byType.EmployeeByType"
+		id="employeeByType" autowire="byType">
+		<property name="name" value="Harshit" />
+	</bean>
+
+	<bean class="com.nikunj.springcore.autowire.byType.AddressByType"
+		id="addressByType" autowire="byName">
+		<property name="city" value="patna" />
+		<property name="state" value="bihar" />
+	</bean>
+
+	<bean
+		class="com.nikunj.springcore.autowire.constructor.EmployeeConstructor"
+		id="employeeConstructor" autowire="constructor">
+		<constructor-arg name="name" value="ladu" />
+	</bean>
+
+	<bean
+		class="com.nikunj.springcore.autowire.defaultAutowire.EmployeeWithDefault"
+		id="employeeWithDefault" >
+		<property name="name" value="gopi" />
+		<property name="addressWithDefault" ref="addressWithDefault" />
+	</bean>
+	
+	<bean
+		class="com.nikunj.springcore.autowire.defaultAutowire.AddressWithDefault"
+		id="addressWithDefault">
+		<property name="city" value="amreli" />
+		<property name="state" value="gujarat" />
+	</bean>
+
+</beans>
