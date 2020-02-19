@@ -6,5 +6,5 @@ public interface SpringJDBCDAO {
 	
 	public void insert(SpringJDBCDTO dto);
 	
-	public void getById();
+	public void showTable();
 }

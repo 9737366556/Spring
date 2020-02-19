@@ -14,13 +14,13 @@ public class ConstructorDemo {
 
 	// public default constructor
 	public ConstructorDemo(String name, int id) {
-		System.out.println("bean Initialization using Application Context with Setter");
 		this.name = name;
 		this.id = id;
 	}
 
 	// function to show the value of the property
 	public void show() {
+		System.out.println("bean Initialization using Application Context with constructor");
 		System.out.println(id + " " + name);
 	}
 

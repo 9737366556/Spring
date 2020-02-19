@@ -13,7 +13,7 @@ public class BeanFactoryConstructorDemo {
 
 	// public default constructor
 	public BeanFactoryConstructorDemo(String name, int id) {
-		System.out.println("bean Initialization using beanFactory with Setter");
+		System.out.println("bean Initialization using beanFactory with constructor");
 		this.name = name;
 		this.id = id;
 	}

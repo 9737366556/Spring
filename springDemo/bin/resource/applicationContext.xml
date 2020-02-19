@@ -11,8 +11,8 @@
 
 	<bean id="constructorDemo"
 		class="com.nikunj.springcore.applicationContextDemo.demo.ConstructorDemo">
-		<constructor-arg value="10" type="int" />
-		<constructor-arg value="nikunj" />
+		<constructor-arg name = "id" value="10" type="int" />
+		<constructor-arg name = "name" value="nikunj" />
 	</bean>
 
 	<bean id="setterDemo"

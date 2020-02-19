@@ -1,7 +1,6 @@
 package com.nikunj.springcore.springJDBC.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,7 +48,7 @@ public class SpringJDBCDAOImpl implements SpringJDBCDAO {
 	}
 
 	@Override
-	public void getById() {
+	public void showTable() {
 		Connection connection= null;
 		SpringJDBCDTO dto = null;
 		PreparedStatement pst = null;
@@ -70,8 +69,10 @@ public class SpringJDBCDAOImpl implements SpringJDBCDAO {
 		}finally {
 			if (pst != null || connection != null) {
 				try {
+					
 					pst.close();
 					connection.close();
+					System.out.println("all connection is closed");
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}

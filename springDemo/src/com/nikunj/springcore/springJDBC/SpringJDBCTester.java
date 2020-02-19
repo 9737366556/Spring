@@ -12,10 +12,10 @@ public class SpringJDBCTester {
 		ApplicationContext context = new ClassPathXmlApplicationContext("/resource/springJDBC.xml");
 		
 		SpringJDBCDAO dao = (SpringJDBCDAO)context.getBean("springJDBCDAO");
-		SpringJDBCDTO dto = new SpringJDBCDTO( 5,"gopi", 30);
+		SpringJDBCDTO dto = new SpringJDBCDTO( 3,"gopi",26);
 		dao.insert(dto);
 		
-		dao.getById();
+		dao.showTable();
 	
 		System.out.println("main function ended");
 	}
