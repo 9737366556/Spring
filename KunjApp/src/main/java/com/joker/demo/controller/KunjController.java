@@ -1,43 +1,42 @@
 package com.joker.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.joker.demo.Entity.RegistrationDTO;
-import com.joker.demo.dao.Repository;
+import com.joker.demo.Entity.Login;
+import com.joker.demo.Entity.Register;
+import com.joker.demo.service.UserService;
+import com.joker.demo.userUtility.UserResponse;
 
-@Controller
+/**
+ * Purpose : for controlling the application API 
+ *  
+ * @author Nikunj Balar
+ *
+ */
+@RestController
+@RequestMapping("/api")
 public class KunjController {
 
 	@Autowired
-	private Repository dao;
-	
-	@RequestMapping("/")
-	public ModelAndView home(RegistrationDTO dto) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("msg", "data saved sucessfully ");
-		mv.addObject("name",dto.getUserName());
-		mv.setViewName("home");
-		return mv;
-	}
-	
-	@RequestMapping("/home.hasi")
-	public ModelAndView register(RegistrationDTO dto) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("registration");
-		return mv;
+	UserService service;
+
+	// function for register the the details 
+	@PostMapping("/register")
+	public ResponseEntity<UserResponse> register(Register register) {
+		// return the response to the client
+		return new ResponseEntity<UserResponse>(service.saveUser(register), HttpStatus.OK);
 	}
 
-	@RequestMapping("/register.hasi")
-	public ModelAndView home1(RegistrationDTO dto) {
-		ModelAndView mv = new ModelAndView();
-		dao.save(dto);
-
-		mv.setViewName("home");
-		return mv;
+	// function for login 
+	@GetMapping("/login")
+	public ResponseEntity<UserResponse> login(Login login) {
+		// return response to the client
+		return new ResponseEntity<UserResponse>(service.login(login), HttpStatus.OK);
 	}
-	
-	
 }
